@@ -28,3 +28,9 @@ https://randomnerdtutorials.com/download/
 
 -Recuerda que mis archivos son solo codigo tu debes de cambiar de acuerdo a tus datos y también instalar las librerías necesarias
  
+## Videos que sirvieron:
+- Buzzer: https://youtu.be/WA-G_Pg0yas?si=CEqg0hMW61ye9o5g
+- ESP8266 DHT11: https://youtu.be/orxxKfL64bA?si=7EdxUve43bunvXj0
+- Sensor de pH: https://youtu.be/zUEl3Y3yKL4?si=-8l7TLPtSFB6U1fl
+ 
+- 
