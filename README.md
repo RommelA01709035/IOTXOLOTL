@@ -25,4 +25,6 @@ https://randomnerdtutorials.com/download/
 -EL DIAGRAMA DEL SENSOR DE PH NO ES COMO PARECE EN INTERNET  DEBES CALIBRARLO CON LOS TORNILLOS DE LA CAJA AZUL QUE NO ESTA A LADO DEL CONECTOR BNC. EN nuestro caso el pin de salida de datos fue el Do, nuestro pin de tierra fue el que esta a lado de del pin Po (debes verficiar que tierra usar dependiendo de tu slida de datos si es analogica o digital, nosotros usamos analogica) y el pin de voltaje fue V+.
 
 -Recuerda totalmente que si vas a usar más compuertos Dn debes poner su configuración en el codigo arduino en la seccion setup para que esten disponibles sino no harán nada.
+
+-Recuerda que mis archivos son solo codigo tu debes de cambiar de acuerdo a tus datos y también instalar las librerías necesarias
  
