@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Estilo para las imágenes del ajolote */
+.ajoloteIMG {
+    width: 200px; /* Ancho en píxeles */
+    height: auto; /* Mantén la proporción original */
+}
+
+.ajoloteName{
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.menu {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    width: 30%; /* Establece el ancho de la sección */
+    text-align: center; /* Centra el contenido dentro de la sección */
+}
+
+.menu li {
+    margin-bottom: 10px;
+}
+
+.ajolote-info {
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 80%; /* Establece el ancho de la sección */
+    text-align: center; /* Centra el contenido dentro de la sección */
+}
+
+.grafico {
+    margin-top: 20px;
+}
+
+/* Estilo para los botones y las imágenes dentro de los botones */
+.buttonAjolote {
+    display: inline-table;
+    border: 3px solid #ab0f0f; /* Color del marco */
+    padding: 10px;
+    margin: 10px;
+    transition: border-color 0.3s; /* Animación de cambio de color del marco */
+    text-align: center;
+    text-decoration: none;
+    width: 200px; /* Ancho fijo */
+    height: 200px; /* Altura fija */
+}
+
+
+/* Cambio de color del marco cuando se pasa el mouse sobre el botón */
+.buttonAjolote:hover {
+    border-color: #ff6600; /* Nuevo color del marco en hover */
+}
+
+.buttonAjolote img {
+    max-width: 200px; 
+    height: auto; 
+}
+
+
+.ajolote-image-container {
+    text-align: center; /* Centra el contenido horizontalmente */
+    margin: 20px auto;  /* Margen superior e inferior para centrarlo verticalmente y separarlo del resto del contenido */
+    max-width: 80%;     /* Limita el ancho del contenedor */
+}
+
+/* Estilo para la imagen del ajolote */
+.ajolote-image-container img {
+    max-width: 300px; /* Ajusta la imagen al ancho del contenedor */
+    height: 300px;    /* Mantén la proporción original */
+}

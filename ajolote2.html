@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajolote 2</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta http-equiv="refresh" content="15">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.1.1/highcharts.js"></script>
+</head>
+<body>
+    
+    <div class="menu">
+        <h1>Ajolote 2</h1>
+    </div>
+    <div class="ajolote-image-container">
+        <img src="ajolote2.jpg" alt="Ajolote 1">
+    </div>
+    <div class="ajolote-info">
+        <h2>Datos Generales:</h2>
+        <p>Especie: Especie 2</p>
+        <p>Temperatura adecuada: 24 °C</p>
+        <p>pH adecuado: 7.0</p>
+        <h2>Gráfica de Humedad:</h2>
+        <div id="container" style="min-width: 310px; height: 310px; margin: 0 auto"></div>
+        <h2>Gráfica de Temperatura:</h2>
+        <div id="container2" style="min-width: 310px; height: 310px; margin: 0 auto"></div>
+        <h2>Gráfica de Ph:</h2>
+        <div id="container3" style="min-width: 310px; height: 310px; margin: 0 auto"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script>
+      var TOKEN = 'BBUS-MlBkOE4HhxVCePRaQlQd1Lc2p50ukK';
+      var VARIABLE1 = '654fc7fa07b504000dfcd5b9';
+      var VARIABLE2 = '654fc7fbf1d51a000b861c36';
+      var VARIABLE3 = '655ad41c6a7d9d000ef9976c';
+      var chart1 = Highcharts.chart('container', {
+          chart: {
+              type: 'line'
+          },
+          title: {
+              text: 'Humedad'
+          },
+          xAxis: {
+              type: 'datetime',
+          },
+          credits: {
+              enabled: false
+          },
+          series: [{
+              data: []
+          }]
+      });
+
+      var chart2 = Highcharts.chart('container2', {
+          chart: {
+              type: 'line'
+          },
+          title: {
+              text: 'Temperatura'
+          },
+          xAxis: {
+              type: 'datetime',
+          },
+          credits: {
+              enabled: false
+          },
+          series: [{
+              data: []
+          }]
+      });
+
+      function getDataFromVariable(variable, token, callback, chart) {
+          var url = 'https://industrial.api.ubidots.com/api/v1.6/variables/' + variable + '/values';
+          var headers = {
+              'X-Auth-Token': token,
+              'Content-Type': 'application/json'
+          };
+
+          $.ajax({
+              url: url,
+              method: 'GET',
+              headers: headers,
+              success: function (res) {
+                  callback(res.results, chart);
+              }
+          });
+      }
+
+      var chart3 = Highcharts.chart('container3', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'ph'
+            },
+            xAxis: {
+                type: 'datetime',
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                data: []
+            }]
+        });
+
+
+      function updateChart(values, chart) {
+          var data = values.map(function (value) {
+              return [value.timestamp, value.value];
+          });
+
+          chart.series[0].setData(data);
+      }
+
+      // Obtener y actualizar datos para la primera variable
+      getDataFromVariable(VARIABLE1, TOKEN, updateChart, chart1);
+
+      // Obtener y actualizar datos para la segunda variable
+      getDataFromVariable(VARIABLE2, TOKEN, updateChart, chart2);
+
+      getDataFromVariable(VARIABLE3, TOKEN, updateChart, chart3);
+      // Resto del código para mostrar el último dato en el HTML
+      var ubidotsAPI = 'https://industrial.api.ubidots.com/api/v1.6/variables/654fc7fa07b504000dfcd5b9/values/?token=BBUS-MlBkOE4HhxVCePRaQlQd1Lc2p50ukK';
+      
+  </script>
+
+</body>
+</html>
+
