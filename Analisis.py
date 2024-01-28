@@ -68,39 +68,20 @@ def realizar_eda():
 
 def realizar_boxplot():
     if datos is not None:
-        # Crear una nueva pestaña para el boxplot
-        pestaña_boxplot = ttk.Frame(notebook)
-        notebook.add(pestaña_boxplot, text="Boxplot")
+        # Crear una nueva pestaña para el análisis descriptivo
+        pestaña_descriptivo = ttk.Frame(notebook)
+        notebook.add(pestaña_descriptivo, text="Boxplot")
 
-        # Crear controles deslizantes para ajustar la escala del boxplot
-        label_escala = tk.Label(pestaña_boxplot, text="Ajustar Escala:")
-        label_escala.grid(row=0, column=0, padx=10, pady=10)
+        # Crear un lienzo para mostrar el boxplot
+        figure, ax2 = plt.subplots(figsize=(12, 6))
 
-        escala_minima = tk.DoubleVar()
-        escala_maxima = tk.DoubleVar()
+        # Mostrar gráfico de caja para visualizar datos atípicos
+        datos.boxplot(ax=ax2)
+        ax2.set_title("Gráfico de Caja")
 
-        slider_min = tk.Scale(pestaña_boxplot, variable=escala_minima, from_=0, to=100, resolution=0.1, orient="horizontal", label="Mínimo")
-        slider_max = tk.Scale(pestaña_boxplot, variable=escala_maxima, from_=0, to=100, resolution=0.1, orient="horizontal", label="Máximo")
-
-        slider_min.grid(row=0, column=1, padx=10, pady=10)
-        slider_max.grid(row=0, column=2, padx=10, pady=10)
-
-        # Configurar el boxplot con la escala ajustada
-        def actualizar_boxplot():
-            figura, ax = plt.subplots(figsize=(12, 6))
-            datos.boxplot(ax=ax)
-            ax.set_title("Gráfico de Caja")
-            ax.set_ylim(escala_minima.get(), escala_maxima.get())
-
-            # Crear un lienzo para mostrar el boxplot
-            canvas = FigureCanvasTkAgg(figura, master=pestaña_boxplot)
-            canvas.get_tk_widget().grid(row=1, column=0, columnspan=3, padx=20, pady=20)
-
-        actualizar_boxplot()
-
-        # Agregar un botón para aplicar la escala
-        boton_aplicar = tk.Button(pestaña_boxplot, text="Aplicar Escala", command=actualizar_boxplot)
-        boton_aplicar.grid(row=2, column=1, columnspan=2, pady=10)
+        # Crear un lienzo para mostrar el boxplot
+        canvas = FigureCanvasTkAgg(figure, master=pestaña_descriptivo)
+        canvas.get_tk_widget().pack(padx=20, pady=20)
 
         # Actualizar la interfaz
         ventana.update_idletasks()
